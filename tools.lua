@@ -7,7 +7,7 @@ minetest.register_tool("myadmin:ultimate_tool", {
 	inventory_image = "ultimate_tool.png",
 	groups = {not_in_creative_inventory=1},
 	tool_capabilities = {
-		full_punch_interval = 0,
+		full_punch_interval = 0.2,
 		max_drop_level=3,
 		groupcaps= {
 			unbreakable={times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=3},
@@ -25,7 +25,7 @@ minetest.register_tool("myadmin:ultimate_tool_drop", {
 	inventory_image = "ultimate_tool2.png",
 	groups = {not_in_creative_inventory=1},
 	tool_capabilities = {
-		full_punch_interval = 0,
+		full_punch_interval = 0.2,
 		max_drop_level=3,
 		groupcaps= {
 			unbreakable={times={[1]=0, [2]=0, [3]=0}, uses=0, maxlevel=3},
