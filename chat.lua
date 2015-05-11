@@ -1,4 +1,12 @@
 minetest.register_on_chat_message(function(name, message, playername, player)
+    local cmd ="/chats"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/chats' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_player(name, "Available commands - /afk, /back, /here, /there, /happy, /sad, /funny, /crazy, /hurt, /mining")
+            return true
+        end
+    end
     local cmd ="/afk"
     if message:sub(0, #cmd) == cmd then
             if message == '/afk' then
@@ -87,9 +95,9 @@ minetest.register_on_chat_message(function(name, message, playername, player)
             return true
         end
     end
-    local cmd ="/mine"
+    local cmd ="/mining"
     if message:sub(0, #cmd) == cmd then
-            if message == '/mine' then
+            if message == '/mining' then
             local player = minetest.env:get_player_by_name(name)
             minetest.chat_send_all(name.." is mining!")
             return true
