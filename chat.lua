@@ -54,6 +54,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
             minetest.chat_send_all(name.." is sooooooooooooooooooooooooooooo funny! ")
             return true
         end
+    end
     local cmd ="/crazy"
     if message:sub(0, #cmd) == cmd then
             if message == '/crazy' then
@@ -62,5 +63,36 @@ minetest.register_on_chat_message(function(name, message, playername, player)
             return true
         end
     end
+    local cmd ="/max"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/max' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all("Max is the greatest guy ever! Except for Batman. Batman is better!")
+            return true
+        end
+    end
+    local cmd ="/bat"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/bat' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all("Batman is the greatest guy ever! Except for Max. Max is better!")
+            return true
+        end
+    end
+    local cmd ="/hurt"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/hurt' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all(name.." is hurt!")
+            return true
+        end
+    end
+    local cmd ="/mine"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/mine' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all(name.." is mining!")
+            return true
+        end
     end
 end)
