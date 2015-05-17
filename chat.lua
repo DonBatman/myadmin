@@ -3,7 +3,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
     if message:sub(0, #cmd) == cmd then
             if message == '/chats' then
             local player = minetest.env:get_player_by_name(name)
-            minetest.chat_send_player(name, "Available commands - /afk, /back, /here, /there, /happy, /sad, /funny, /crazy, /hurt, /mining")
+            minetest.chat_send_player(name, "Available commands - /afk, /back, /here, /there, /happy, /sad, /surprised, /mad, /funny, /crazy, /hurt, /mining")
             return true
         end
     end
@@ -39,6 +39,22 @@ minetest.register_on_chat_message(function(name, message, playername, player)
             return true
         end
     end
+    local cmd ="/surprised"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/surprised' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all(name.." is Surprised! ")
+            return true
+        end
+    end
+    local cmd ="/mad"
+    if message:sub(0, #cmd) == cmd then
+            if message == '/mad' then
+            local player = minetest.env:get_player_by_name(name)
+            minetest.chat_send_all(name.." is Soooooooooo Mad! ")
+            return true
+        end
+    end
     local cmd ="/here"
     if message:sub(0, #cmd) == cmd then
             if message == '/here' then
@@ -67,7 +83,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
     if message:sub(0, #cmd) == cmd then
             if message == '/crazy' then
             local player = minetest.env:get_player_by_name(name)
-            minetest.chat_send_all(name.." is losing his mind! ")
+            minetest.chat_send_all(name.." is losing thier mind! ")
             return true
         end
     end
