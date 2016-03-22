@@ -1,10 +1,10 @@
 
 minetest.register_privilege("myadmin_levels", "Lets person set level of privlege people have")
 
-minetest.register_chatcommand("tps_commands", {
+minetest.register_chatcommand("myadmin_commands", {
 	privs = {privs = true},
 	func = function(name, param)
-		minetest.chat_send_player(name,"Available commands - /admin, /mod, /helper, /norm, /punish, /unpunish, silence")
+		minetest.chat_send_player(name,"Available commands - /admin, /mod, /helper, /norm, /punish, /unpunish, silence, /ghost")
 		return true
 	end,
 })
