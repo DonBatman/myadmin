@@ -40,8 +40,8 @@ minetest.register_tool("myadmin:ultimate_tool_drop", {
 })
 minetest.register_on_punchnode(function(pos, node, puncher)
 	if puncher:get_wielded_item():get_name() == "myadmin:ultimate_tool"
-	and minetest.env: get_node(pos).name ~= "air" then
-		minetest.env:remove_node(pos)
+	and minetest.get_node(pos).name ~= "air" then
+		minetest.remove_node(pos)
 	end
 end)
 
