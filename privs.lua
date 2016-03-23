@@ -1,5 +1,6 @@
 
 minetest.register_privilege("myadmin_levels", "Lets person set level of privlege people have")
+minetest.register_privilege("myadmin_levels_super", "Lets person set level of privlege people have plus the super level")
 
 minetest.register_chatcommand("myadmin_commands", {
 	privs = {privs = true},
@@ -9,10 +10,10 @@ minetest.register_chatcommand("myadmin_commands", {
 	end,
 })
 
-minetest.register_chatcommand("admin", {
+minetest.register_chatcommand("super_admin", {
 	params = "",
-	description = "Administrator",
-	privs={myadmin_levels=true},
+	description = "Super Administrator",
+	privs={myadmin_levels_super=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -27,6 +28,34 @@ minetest.register_chatcommand("admin", {
 			privs.fly=true
 			privs.noclip=true
 			privs.privs=true
+			privs.basic_privs=true
+			privs.kick=true
+			privs.ban=true
+			privs.myadmin_levels=true
+			privs.tps_magicchests=true
+			minetest.set_player_privs(param,privs)
+			minetest.chat_send_player(param, "You are now a Super Admin")
+			minetest.chat_send_player(name, param .. " is now a Super Admin")
+			return true
+		end
+end})
+
+minetest.register_chatcommand("admin", {
+	params = "",
+	description = "Administrator",
+	privs={myadmin_levels=true},
+	func = function(name, param)
+		if minetest.get_player_by_name(param) then
+		minetest.set_player_privs(param, {})
+		local privs=minetest.get_player_privs(param)
+			privs.shout=true
+			privs.interact=true
+			privs.home=true
+			privs.teleport=true
+			privs.bring=true
+			privs.fast=true
+			privs.fly=true
+			privs.noclip=true
 			privs.basic_privs=true
 			privs.kick=true
 			privs.ban=true
