@@ -1,0 +1,45 @@
+
+myadmin.server_name = "My Server"
+
+-- spawn_name is the name you use in the chat commant
+-- If you are not using the spawn_name then set it to false
+
+myadmin.spawn1_name = "spawn"
+myadmin.spawn1 = {x = 0, y = 0, z = 0}
+
+myadmin.spawn2_name = "spawn2"
+myadmin.spawn2 = {x = 0, y = 0, z = 0}
+
+myadmin.spawn3_name = "spawn3"
+myadmin.spawn3 = {x = 0, y = 0, z = 0}
+
+myadmin.spawn4_name = "spawn4"
+myadmin.spawn4 = {x = 0, y = 0, z = 0}
+
+myadmin.spawn5_name = "spawn5"
+myadmin.spawn5 = {x = 0, y = 0, z = 0}
+
+
+-- If the myadmin_extras priv setting is true then only people with the priv can use the extras
+
+myadmin.extras_priv = true
+
+
+
+-- These are the curse words that are not allowed on the server
+
+myadmin.bad_words = {
+"fuck",
+"faggot",
+"asshole",
+"arsehole",
+"dick",
+"cunt",
+"wtf",
+"retard",
+"bitch",
+"shit",
+"bastard",
+"nigger",
+"nigga"
+}

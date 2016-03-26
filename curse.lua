@@ -1,6 +1,8 @@
  local bad_words = {
 "fuck",
 "faggot",
+"fag",
+"gay",
 "asshole",
 "arsehole",
 "dick",
