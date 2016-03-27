@@ -112,17 +112,3 @@ minetest.register_chatcommand("mining", {
 		return true
 	end,
 })
-minetest.register_chatcommand("max", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all("Max is the greatest guy ever! Except for Batman. Batman is better!")
-		return true
-	end,
-})
-minetest.register_chatcommand("bat", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all("Batman is the greatest guy ever! Except for Max. Max is better!")
-		return true
-	end,
-})

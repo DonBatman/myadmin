@@ -11,20 +11,6 @@ if input then
 
 end
 
-print(myadmin.server_name)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 dofile(minetest.get_modpath("myadmin").."/tools.lua")
 dofile(minetest.get_modpath("myadmin").."/spawn.lua")
