@@ -1,6 +1,13 @@
 
 myadmin.server_name = "My Server"
 
+myadmin.server_message = "Welcome to our server"
+
+myadmin.guest = true
+
+myadmin.names_per_ip = 5
+
+
 -- spawn_name is the name you use in the chat commant
 -- If you are not using the spawn_name then set it to false
 

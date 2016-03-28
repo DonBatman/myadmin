@@ -64,7 +64,33 @@ Extras are extra neat things that  I would like to see on servers. Right now the
 
 
 
+#Names Per IP
 
+This is the names_per_ip mod from Krock. It limits the number of accounts that each ip address can have.
+This is settable in the settings.txt.
+
+
+#Guest
+
+There is a setting to decide if you want to allow names with guest in them.
+This is settable in settings.txt
+
+
+#Password
+
+A setting in the settingstxt to allow you to set whether or not you allow empty passwords.
+This can be set in minetest.conf file as well.
+
+
+#Underworld
+
+This might not fit in this mod but I added it here anyway.
+
+This is a teleporter that when set also places a teleporter below at what ever height you set it at.
+Place a teleporter and a form opens. Name the teleporter and set the depth of the other. Click set.
+When you step into the teleporter you will teleport down. After 10 seconds you can use the teleporter again.
+
+You need the myadmin_levels_super priv to place and destroy the teleporters.
 
 
 

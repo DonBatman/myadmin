@@ -1,5 +1,5 @@
 -- Created by Krock to stop mass-account-creators
--- License: WTFPL
+-- License: DWYWPL
 
 ipnames = {}
 ipnames.data = {}
@@ -9,7 +9,7 @@ ipnames.save_interval = 120
 ipnames.save_time = 0
 ipnames.file = minetest.get_worldpath().."/ipnames.txt"
 
-ipnames.name_per_ip_limit = minetest.setting_get("max_names_per_ip") or 5
+ipnames.name_per_ip_limit = myadmin.names_per_ip
 
 -- Get accounts self:
 minetest.register_chatcommand("whois", {
