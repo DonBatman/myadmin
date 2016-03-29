@@ -1,4 +1,6 @@
- local bad_words = {
+ local bad_words = myadmin.bad_words
+ if bad_words == nil then
+	bad_words = {
 "fuck",
 "faggot",
 "fag",
@@ -15,6 +17,7 @@
 "nigger",
 "nigga"
 }
+end
 minetest.register_on_chat_message(function(name, message)
 	if not message then return end
 	local msg = message:lower()

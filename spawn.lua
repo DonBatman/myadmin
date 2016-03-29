@@ -1,19 +1,31 @@
+if myadmin.spawn1_name  then
+	if myadmin.spawn1_name ~= false then
+		s1n = myadmin.spawn1_name
+		s1 = myadmin.spawn1
+	end
 
-s1n = myadmin.spawn1_name
-s1 = myadmin.spawn1
+	if myadmin.spawn2_name ~= false then
+		s2n = myadmin.spawn2_name
+		s2 = myadmin.spawn2
+	end
 
-s2n = myadmin.spawn2_name
-s2 = myadmin.spawn2
+	if myadmin.spawn3_name ~= false then
+		s3n = myadmin.spawn3_name
+		s3 = myadmin.spawn3
+	end
 
-s3n = myadmin.spawn3_name
-s3 = myadmin.spawn3
+	if myadmin.spawn4_name ~= false then
+		s4n = myadmin.spawn4_name
+		s4 = myadmin.spawn4
+	end
 
-s4n = myadmin.spawn4_name
-s4 = myadmin.spawn4
-
-s5n = myadmin.spawn5_name
-s5 = myadmin.spawn5
-
+	if myadmin.spawn5_name ~= false then
+		s5n = myadmin.spawn5_name
+		s5 = myadmin.spawn5
+	end
+else
+	return
+end
 
 
 minetest.register_on_chat_message(function(name, message, playername, player)

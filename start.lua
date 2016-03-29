@@ -1,13 +1,21 @@
-local servername = "My Server"
+
+local servername = myadmin.server_name
+	if servername == nil then
+local		servername = "Our Server"
+	end
+
 
 local f = assert(io.open(minetest.get_modpath("myadmin").."/rules.txt", "r"))
 local the_text = f:read("*all")
 	f:close()
 
+	minetest.chat_send_all("Please tell the admin that the rules file needs to be created")
+
+minetest.setting_set("default_privs", "shout")
 
 minetest.register_on_joinplayer(function(player)
 
-	if minetest.get_player_privs(player:get_player_name()).mysoundblocks ~= true then
+	if minetest.get_player_privs(player:get_player_name()).interact ~= true then
 
 		minetest.show_formspec(player:get_player_name(), "start_screen",
 
@@ -24,8 +32,15 @@ minetest.register_on_joinplayer(function(player)
 
 		if fields["yes"] then
 
-			minetest.set_player_privs(pname, {shout,interact,home,fast})
-			minetest.chat_send_player(pname, "Welcome to "..servername.." "..pname..". Have fun!")
+		local privs=minetest.get_player_privs(pname)
+		
+			privs.shout=true
+			privs.interact=true
+			privs.home=true
+			privs.fast=true
+			minetest.set_player_privs(pname,privs)
+
+			return true
 
 		elseif fields["no"] then
 
