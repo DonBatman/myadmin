@@ -1,4 +1,4 @@
-minetest.register_privilege("myadmin_extras", "Need to use the extras")
+minetest.register_privilege("myextras", "Need to use the extras")
 
 minetest.register_chatcommand("setbar", {
 	params = "",

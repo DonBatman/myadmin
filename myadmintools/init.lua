@@ -1,8 +1,8 @@
 
-minetest.register_alias("ut", "myadmin:ultimate_tool")
-minetest.register_alias("utd", "myadmin:ultimate_tool_drop")
+minetest.register_alias("ut", "myadmintools:ultimate_tool")
+minetest.register_alias("utd", "myadmintools:ultimate_tool_drop")
 
-minetest.register_tool("myadmin:ultimate_tool", {
+minetest.register_tool("myadmintools:ultimate_tool", {
 	description = "Ultimate Tool",
 	inventory_image = "ultimate_tool.png",
 	groups = {not_in_creative_inventory=1},
@@ -22,7 +22,7 @@ minetest.register_tool("myadmin:ultimate_tool", {
 	on_drop = function(itemstack, dropper, pos)
 	end
 })
-minetest.register_tool("myadmin:ultimate_tool_drop", {
+minetest.register_tool("myadmintools:ultimate_tool_drop", {
 	description = "Ultimate Tool With Drops",
 	inventory_image = "ultimate_tool2.png",
 	groups = {not_in_creative_inventory=1},
@@ -45,14 +45,14 @@ minetest.register_tool("myadmin:ultimate_tool_drop", {
 
 minetest.register_on_punchnode(function(pos, node, puncher)
 	local n = node
-	if puncher:get_wielded_item():get_name() == "myadmin:ultimate_tool"
+	if puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool"
 	and minetest.get_node(pos).name ~= "air" 
 	and minetest.get_player_privs(puncher:get_player_name()).myadmin_levels_super == true then
 		minetest.remove_node(pos)
 	end
 
-	if puncher:get_wielded_item():get_name() == "myadmin:ultimate_tool"
-	or puncher:get_wielded_item():get_name() == "myadmin:ultimate_tool_drop"
+	if puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool"
+	or puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool_drop"
 	and minetest.get_node(pos).name ~= "air" then
 		if minetest.get_player_privs(puncher:get_player_name()).myadmin_levels_super ~= true then
 			minetest.chat_send_player(puncher:get_player_name(), "You don't have the priv for this tool")

@@ -6,6 +6,7 @@ minetest.register_chatcommand("chats", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("afk", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -13,6 +14,7 @@ minetest.register_chatcommand("afk", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("back", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -20,6 +22,7 @@ minetest.register_chatcommand("back", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("gtg", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -27,6 +30,7 @@ minetest.register_chatcommand("gtg", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("bbl", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -34,6 +38,7 @@ minetest.register_chatcommand("bbl", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("lol", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -41,6 +46,7 @@ minetest.register_chatcommand("lol", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("happy", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -48,6 +54,7 @@ minetest.register_chatcommand("happy", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("sad", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -55,6 +62,7 @@ minetest.register_chatcommand("sad", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("surprised", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -62,6 +70,7 @@ minetest.register_chatcommand("surprised", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("mad", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -77,6 +86,7 @@ minetest.register_chatcommand("here", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("there", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -84,6 +94,7 @@ minetest.register_chatcommand("there", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("funny", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -91,6 +102,7 @@ minetest.register_chatcommand("funny", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("crazy", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -98,6 +110,7 @@ minetest.register_chatcommand("crazy", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("hurt", {
 	privs = {shout = true},
 	func = function(name, param)
@@ -105,6 +118,7 @@ minetest.register_chatcommand("hurt", {
 		return true
 	end,
 })
+
 minetest.register_chatcommand("mining", {
 	privs = {shout = true},
 	func = function(name, param)

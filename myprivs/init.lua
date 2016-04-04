@@ -1,8 +1,8 @@
 
-minetest.register_privilege("myadmin_levels", "Lets person set level of privlege people have")
-minetest.register_privilege("myadmin_levels_super", "Lets person set level of privlege people have plus the super level")
+minetest.register_privilege("myprivs_levels", "Lets person set level of privlege people have")
+minetest.register_privilege("myprivs_levels_super", "Lets person set level of privlege people have plus the super level")
 
-minetest.register_chatcommand("myadmin_commands", {
+minetest.register_chatcommand("myprivs_commands", {
 	privs = {myadmin_levels = true},
 	func = function(name, param)
 		minetest.chat_send_player(name,"Available commands - /admin, /mod, /helper, /norm, /punish, /unpunish, silence, /ghost")
@@ -13,7 +13,7 @@ minetest.register_chatcommand("myadmin_commands", {
 minetest.register_chatcommand("super_admin", {
 	params = "",
 	description = "Super Administrator",
-	privs={myadmin_levels_super=true},
+	privs={myprivs_levels_super=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -43,7 +43,7 @@ end})
 minetest.register_chatcommand("admin", {
 	params = "",
 	description = "Administrator",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -71,7 +71,7 @@ end})
 minetest.register_chatcommand("mod", {
 	params = "",
 	description = "Moderator",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -94,7 +94,7 @@ end})
 minetest.register_chatcommand("helper", {
 	params = "",
 	description = "Helper",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -115,7 +115,7 @@ end})
 minetest.register_chatcommand("norm", {
 	params = "",
 	description = "Normal Player",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -134,7 +134,7 @@ end})
 minetest.register_chatcommand("unpunish", {
 	params = "",
 	description = "Unpunish Player",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -153,7 +153,7 @@ end})
 minetest.register_chatcommand("punish", {
 	params = "",
 	description = "Punish Player",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -169,7 +169,7 @@ end})
 minetest.register_chatcommand("silence", {
 	params = "",
 	description = "Silence Player",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})
@@ -187,7 +187,7 @@ end})
 minetest.register_chatcommand("ghost", {
 	params = "",
 	description = "Remove all privs",
-	privs={myadmin_levels=true},
+	privs={myprivs_levels=true},
 	func = function(name, param)
 		if minetest.get_player_by_name(param) then
 		minetest.set_player_privs(param, {})

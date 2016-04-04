@@ -1,35 +1,28 @@
-if myadmin.spawn1_name  then
-	if myadmin.spawn1_name ~= false then
-		s1n = myadmin.spawn1_name
-		s1 = myadmin.spawn1
-	end
+-- If not using then set the name to nil
 
-	if myadmin.spawn2_name ~= false then
-		s2n = myadmin.spawn2_name
-		s2 = myadmin.spawn2
-	end
+-- Spawn 1
+local s1n = "spawn1"
+local s1 = {x = 0, y = 0, z = 0}
 
-	if myadmin.spawn3_name ~= false then
-		s3n = myadmin.spawn3_name
-		s3 = myadmin.spawn3
-	end
+-- Spawn 2
+local s2n = "spawn2"
+local s2 = {x = 0, y = 0, z = 0}
 
-	if myadmin.spawn4_name ~= false then
-		s4n = myadmin.spawn4_name
-		s4 = myadmin.spawn4
-	end
+--Spawn 3
+local s3n = "spawn3"
+local s3 = {x = 0, y = 0, z = 0}
 
-	if myadmin.spawn5_name ~= false then
-		s5n = myadmin.spawn5_name
-		s5 = myadmin.spawn5
-	end
-else
-	return
-end
+-- Spawn 4
+local s4n = nil
+local s4 = {x = 0, y = 0, z = 0}
 
+-- Spawn 5
+local s5n = nil
+local s5 = {x = 0, y = 0, z = 0}
 
+-- Nothing to change past here
 minetest.register_on_chat_message(function(name, message, playername, player)
-	if s1n ~= false then
+	if s1n ~= nil then
 		local cmd = "/"..s1n
 		if message:sub(0, #cmd) == cmd then
 			if message == '/'..s1n then
@@ -41,7 +34,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
 		end
 	end
 
-	if s2n ~= false then
+	if s2n ~= nil then
 		local cmd = "/"..s2n
 		if message:sub(0, #cmd) == cmd then
 			if message == '/'..s2n then
@@ -53,7 +46,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
 		end
 	end
 
-	if s3n ~= false then
+	if s3n ~= nil then
 		local cmd = "/"..s3n
 		if message:sub(0, #cmd) == cmd then
 			if message == '/'..s3n then
@@ -65,7 +58,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
 		end
 	end
 
-	if s4n ~= false then
+	if s4n ~= nil then
 		local cmd = "/"..s4n
 		if message:sub(0, #cmd) == cmd then
 			if message == '/'..s4n then
@@ -77,7 +70,7 @@ minetest.register_on_chat_message(function(name, message, playername, player)
 		end
 	end
 
-	if s5n ~= false then
+	if s5n ~= nil then
 		local cmd = "/"..s5n
 		if message:sub(0, #cmd) == cmd then
 			if message == '/'..s5n then

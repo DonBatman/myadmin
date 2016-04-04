@@ -1,11 +1,8 @@
 
-local servername = myadmin.server_name
-	if servername == nil then
-local		servername = "Our Server"
-	end
+local servername = "Our Server"
 
 
-local f = assert(io.open(minetest.get_modpath("myadmin").."/rules.txt", "r"))
+local f = assert(io.open(minetest.get_modpath("mystart").."/rules.txt", "r"))
 local the_text = f:read("*all")
 	f:close()
 
