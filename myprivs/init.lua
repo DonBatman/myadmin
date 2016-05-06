@@ -3,7 +3,7 @@ minetest.register_privilege("myprivs_levels", "Lets person set level of privlege
 minetest.register_privilege("myprivs_levels_super", "Lets person set level of privlege people have plus the super level")
 
 minetest.register_chatcommand("myprivs_commands", {
-	privs = {myadmin_levels = true},
+	privs = {myprivs_levels = true},
 	func = function(name, param)
 		minetest.chat_send_player(name,"Available commands - /admin, /mod, /helper, /norm, /punish, /unpunish, silence, /ghost")
 		return true
@@ -31,6 +31,7 @@ minetest.register_chatcommand("super_admin", {
 			privs.basic_privs=true
 			privs.kick=true
 			privs.ban=true
+			privs.areas=true
 			privs.myadmin_levels=true
 			privs.tps_magicchests=true
 			minetest.set_player_privs(param,privs)
@@ -59,6 +60,7 @@ minetest.register_chatcommand("admin", {
 			privs.basic_privs=true
 			privs.kick=true
 			privs.ban=true
+			privs.areas=true
 			privs.myadmin_levels=true
 			privs.tps_magicchests=true
 			minetest.set_player_privs(param,privs)
