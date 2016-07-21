@@ -10,7 +10,8 @@ local bad_names = {
 		"bastard",
 		"nigger",
 		"nigga",
-		"guest"
+		"guest",
+		"sadie"
 		}
 
 for _, nm in pairs(bad_names) do
