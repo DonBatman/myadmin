@@ -47,14 +47,14 @@ minetest.register_on_punchnode(function(pos, node, puncher)
 	local n = node
 	if puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool"
 	and minetest.get_node(pos).name ~= "air" 
-	and minetest.get_player_privs(puncher:get_player_name()).myadmin_levels_super == true then
+	and minetest.get_player_privs(puncher:get_player_name()).myprivs_levels_super == true then
 		minetest.remove_node(pos)
 	end
 
 	if puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool"
 	or puncher:get_wielded_item():get_name() == "myadmintools:ultimate_tool_drop"
 	and minetest.get_node(pos).name ~= "air" then
-		if minetest.get_player_privs(puncher:get_player_name()).myadmin_levels_super ~= true then
+		if minetest.get_player_privs(puncher:get_player_name()).myprivs_levels_super ~= true then
 			minetest.chat_send_player(puncher:get_player_name(), "You don't have the priv for this tool")
 			puncher:set_wielded_item("default:stick")
 			minetest.set_node(pos,{name = node.name})
