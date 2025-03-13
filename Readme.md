@@ -93,15 +93,4 @@ When you step into the teleporter you will teleport down. After 10 seconds you c
 You need the myadmin_levels_super priv to place and destroy the teleporters.
 
 
-
-
-
-
-
-
-
-
-
-
-
-licence - DWYWPL
+licence - MIT
