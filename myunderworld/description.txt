@@ -1,0 +1,2 @@
+Sets a portal to send you straight down to what ever distance you set it to.
+Be sure to set home first.
