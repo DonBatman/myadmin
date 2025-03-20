@@ -13,7 +13,9 @@ local bad_words = {
 		"shit",
 		"bastard",
 		"nigger",
-		"nigga"
+		"nigga",
+		"damn",
+		"ass"
 		}
 
 minetest.register_on_chat_message(function(name, message)
