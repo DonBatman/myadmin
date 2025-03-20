@@ -1,128 +1,57 @@
+local emotes = {
+    afk = "is AFK!",
+    back = "is back!",
+    gtg = "needs to go now. Bye!",
+    bbl = "is leaving and will be back later.",
+    lol = "is laughing out loud! Ha Ha Ha Ha Ha Ha Ha",
+    happy = "is happy!",
+    sad = "is sad!",
+    surprised = "is surprised!",
+    mad = "is soooooooo mad!",
+    here = "is here!",
+    there = "is not there! is here",
+    funny = "is soooooooooooo funny!",
+    crazy = "is losing their mind!",
+    hurt = "is hurt!",
+    mining = "is mining!",
+}
 
-minetest.register_chatcommand("chats", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_player(name,"Available commands - /afk, /back, /here, /there, /happy, /sad, /surprised, /mad, /funny, /crazy, /hurt, /mining")
-		return true
-	end,
+local function handle_emote(player_name, emote_name)
+    local emote_message = emotes[emote_name]
+    if emote_message then
+        minetest.chat_send_all(player_name .. " " .. emote_message)
+    else
+        minetest.chat_send_player(player_name, "Invalid emote.")
+    end
+end
+
+minetest.register_chatcommand("emote", {
+    privs = { shout = true },
+    params = "<emote>",
+    func = function(player_name, emote_name)
+        handle_emote(player_name, emote_name)
+        return true
+    end,
 })
 
-minetest.register_chatcommand("afk", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is AFK! ")
-		return true
-	end,
+minetest.register_chatcommand("emotes", {
+    privs = { shout = true },
+    func = function(player_name, _)
+        local emote_list = ""
+        for emote_name, _ in pairs(emotes) do
+            emote_list = emote_list .. "/" .. emote_name .. ", "
+        end
+        minetest.chat_send_player(player_name, "Available emotes: " .. emote_list:sub(1, #emote_list - 2))
+        return true
+    end,
 })
 
-minetest.register_chatcommand("back", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Back! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("gtg", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." needs to go now. Bye!")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("bbl", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is leaving and will be back later.")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("lol", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is laughing out loud! Ha Ha Ha Ha Ha Ha Ha ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("happy", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Happy! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("sad", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Sad! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("surprised", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Surprised! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("mad", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Soooooooooo Mad! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("here", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all("The amazing "..name.." is here! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("there", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is not there! "..name.." is here")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("funny", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is soooooooooooo funny! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("crazy", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is losing their mind! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("hurt", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is hurt! ")
-		return true
-	end,
-})
-
-minetest.register_chatcommand("mining", {
-	privs = {shout = true},
-	func = function(name, param)
-		minetest.chat_send_all(name.." is Mining! ")
-		return true
-	end,
-})
+for emote_name, _ in pairs(emotes) do
+    minetest.register_chatcommand(emote_name, {
+        privs = { shout = true },
+        func = function(player_name, _)
+            handle_emote(player_name, emote_name)
+            return true
+        end,
+    })
+end
