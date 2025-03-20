@@ -33,7 +33,7 @@ minetest.register_chatcommand("super_admin", {
 			privs.ban=true
 			privs.areas=true
 			privs.myprivs_levels=true
-			privs.tps_magicchests=true
+			privs.myadminextras=true
 			minetest.set_player_privs(param,privs)
 			minetest.chat_send_player(param, "You are now a Super Admin")
 			minetest.chat_send_player(name, param .. " is now a Super Admin")
@@ -62,7 +62,7 @@ minetest.register_chatcommand("admin", {
 			privs.ban=true
 			privs.areas=true
 			privs.myprivs_levels=true
-			privs.tps_magicchests=true
+			privs.myadminextras=true
 			minetest.set_player_privs(param,privs)
 			minetest.chat_send_player(param, "You are now an Admin")
 			minetest.chat_send_player(name, param .. " is now an Admin")
