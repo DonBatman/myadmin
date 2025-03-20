@@ -1,9 +1,7 @@
-minetest.register_privilege("myextras", "Need to use the extras")
-
 minetest.register_chatcommand("setbar", {
 	params = "",
 	description = "Sets the size of your hotbar. 1 - 16",
-	privs = {myadmin_extras=true},
+	privs = {myextras=true},
 	func = function(name, param)
 		if param == "" then
 			minetest.chat_send_player(name, "Use a number from 1 - 16")
@@ -20,5 +18,6 @@ minetest.register_chatcommand("setbar", {
 		local player = minetest.get_player_by_name(name)
 		player:hud_set_hotbar_itemcount(tonumber(param))
 		player:hud_set_hotbar_image("")
+		minetest.chat_send_player(name, "Hotbar has been set!")
 	end,
 })
