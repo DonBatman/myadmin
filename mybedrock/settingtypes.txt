@@ -1,0 +1,4 @@
+#Change the minimum depth of bedrock 
+mybedrock.depth (Set minimum depth) int -10000
+#Change the minimum depth of bedrock 
+mybedrock.max_depth (Set maximum depth) int -11000
