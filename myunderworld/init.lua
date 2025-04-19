@@ -1,7 +1,7 @@
 
 local tp = {}
-local min_depth = 5
-local max_depth = 15000
+local min_depth = 0
+local max_depth = 29000
 
 minetest.register_node("myunderworld:underworld", {
 	description = "Underworld",
@@ -55,7 +55,8 @@ minetest.register_node("myunderworld:underworld", {
 			minetest.register_on_player_receive_fields(function(player, fs, fields)
 			local meta = minetest.get_meta(pos)
 			local n = fields["name"]
-			local d = fields["depth"]
+			local d = fields["depth"] or 1
+			core.chat_send_all(d)
 				if tonumber(d) + pos.y > max_depth then
 					d = max_depth + pos.y
 				end
@@ -81,25 +82,40 @@ minetest.register_node("myunderworld:underworld", {
 						meta:set_string("torb","top")
 
 						minetest.forceload_block({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
-
-						minetest.set_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z}, {name = "myunderworld:underworld"})
-						minetest.set_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z}, {name = "myunderworld:underworld_block"})
+						core.after(2, function()
+							minetest.remove_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
+							minetest.remove_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z})
+							core.after(1,function()
+								minetest.set_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z}, {name = "myunderworld:underworld"})
+								minetest.set_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z}, 
+													{name = "myunderworld:underworld_block"})
 						local dmeta = minetest.get_meta({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
 						dmeta:set_string("name",n.." Underworld")
 						dmeta:set_string("infotext",n.." Underworld at "..d)
 						dmeta:set_string("depth",d)
 						dmeta:set_string("torb","bottom")
+							end)
+						end)
+					else
+						return
 					end
 				end
 			end)
 		--end
 	end,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		local meta = core.get_meta(pos)
+		if meta then
+		return
+		end
+		end,
+		
 	on_dig = function(pos, node, player)
 
 		local meta = minetest.get_meta(pos)
 		local n = meta:get_string("torb")
 		local below = tonumber(meta:get_string("depth"))
-			--if below == nil then below = 1 end
+		if below then
 		local b = { x = pos.x, y = pos.y - below, z = pos.z }
 		local btop = { x = pos.x, y = pos.y - (below - 1), z = pos.z }
 
@@ -119,6 +135,10 @@ minetest.register_node("myunderworld:underworld", {
 				minetest.remove_node(t)
 				minetest.remove_node(ttop)
 			end
+		else
+			minetest.remove_node(pos)
+			minetest.remove_node(top)
+		end
 	end,
 })
 
