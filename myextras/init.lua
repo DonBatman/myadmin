@@ -1,7 +1,7 @@
 minetest.register_chatcommand("setbar", {
 	params = "",
 	description = "Sets the size of your hotbar. 1 - 16",
-	privs = {myextras=true},
+	privs = {myextras=false},
 	func = function(name, param)
 		if param == "" then
 			minetest.chat_send_player(name, "Use a number from 1 - 16")
