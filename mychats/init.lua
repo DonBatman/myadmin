@@ -19,13 +19,13 @@ local emotes = {
 local function handle_emote(player_name, emote_name)
     local emote_message = emotes[emote_name]
     if emote_message then
-        minetest.chat_send_all(player_name .. " " .. emote_message)
+        core.chat_send_all(player_name .. " " .. emote_message)
     else
-        minetest.chat_send_player(player_name, "Invalid emote.")
+        core.chat_send_player(player_name, "Invalid emote.")
     end
 end
 
-minetest.register_chatcommand("emote", {
+core.register_chatcommand("emote", {
     privs = { shout = true },
     params = "<emote>",
     func = function(player_name, emote_name)
@@ -34,20 +34,20 @@ minetest.register_chatcommand("emote", {
     end,
 })
 
-minetest.register_chatcommand("emotes", {
+core.register_chatcommand("emotes", {
     privs = { shout = true },
     func = function(player_name, _)
         local emote_list = ""
         for emote_name, _ in pairs(emotes) do
             emote_list = emote_list .. "/" .. emote_name .. ", "
         end
-        minetest.chat_send_player(player_name, "Available emotes: " .. emote_list:sub(1, #emote_list - 2))
+        core.chat_send_player(player_name, "Available emotes: " .. emote_list:sub(1, #emote_list - 2))
         return true
     end,
 })
 
 for emote_name, _ in pairs(emotes) do
-    minetest.register_chatcommand(emote_name, {
+    core.register_chatcommand(emote_name, {
         privs = { shout = true },
         func = function(player_name, _)
             handle_emote(player_name, emote_name)

@@ -3,7 +3,7 @@ local tp = {}
 local min_depth = 0
 local max_depth = 29000
 
-minetest.register_node("myunderworld:underworld", {
+core.register_node("myunderworld:underworld", {
 	description = "Underworld",
 	tiles = {
 		"default_sand.png^[colorize:#000000:255"
@@ -39,21 +39,21 @@ minetest.register_node("myunderworld:underworld", {
 		local top = { x = pos.x, y = pos.y + 1, z = pos.z }
 
 			if top.name ~= air then
-				minetest.chat_send_player(placer, "Not enough room!")
+				core.chat_send_player(placer, "Not enough room!")
 				return
 			end
 
-			minetest.set_node(pos, {name = "myunderworld:underworld"})
-			minetest.set_node(top, {name = "myunderworld:underworld_block"})
+			core.set_node(pos, {name = "myunderworld:underworld"})
+			core.set_node(top, {name = "myunderworld:underworld_block"})
 
-			minetest.show_formspec(placer:get_player_name(),"fs",
+			core.show_formspec(placer:get_player_name(),"fs",
 					"size[6,5;]"..
 					"field[1,1;4.5,1;name;Name;]"..
 					"field[2,2.5;2,1;depth;Depth;]"..
 					"button_exit[2,4;2,1;set;set]")
 
-			minetest.register_on_player_receive_fields(function(player, fs, fields)
-			local meta = minetest.get_meta(pos)
+			core.register_on_player_receive_fields(function(player, fs, fields)
+			local meta = core.get_meta(pos)
 			local n = fields["name"]
 			local d = fields["depth"] or 1
 			core.chat_send_all(d)
@@ -81,15 +81,15 @@ minetest.register_node("myunderworld:underworld", {
 						meta:set_string("depth",d)
 						meta:set_string("torb","top")
 
-						minetest.forceload_block({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
+						core.forceload_block({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
 						core.after(2, function()
-							minetest.remove_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
-							minetest.remove_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z})
+							core.remove_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
+							core.remove_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z})
 							core.after(1,function()
-								minetest.set_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z}, {name = "myunderworld:underworld"})
-								minetest.set_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z}, 
+								core.set_node({x = pos.x, y = pos.y - tonumber(d), z = pos.z}, {name = "myunderworld:underworld"})
+								core.set_node({x = pos.x, y = pos.y - tonumber(d) + 1, z = pos.z}, 
 													{name = "myunderworld:underworld_block"})
-						local dmeta = minetest.get_meta({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
+						local dmeta = core.get_meta({x = pos.x, y = pos.y - tonumber(d), z = pos.z})
 						dmeta:set_string("name",n.." Underworld")
 						dmeta:set_string("infotext",n.." Underworld at "..d)
 						dmeta:set_string("depth",d)
@@ -112,7 +112,7 @@ minetest.register_node("myunderworld:underworld", {
 		
 	on_dig = function(pos, node, player)
 
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local n = meta:get_string("torb")
 		local below = tonumber(meta:get_string("depth"))
 		if below then
@@ -125,24 +125,24 @@ minetest.register_node("myunderworld:underworld", {
 		local top = { x = pos.x, y = pos.y + 1, z = pos.z }
 
 			if n == "top" then
-				minetest.remove_node(pos)
-				minetest.remove_node(top)
-				minetest.remove_node(b)
-				minetest.remove_node(btop)
+				core.remove_node(pos)
+				core.remove_node(top)
+				core.remove_node(b)
+				core.remove_node(btop)
 			elseif n == "bottom" then
-				minetest.remove_node(pos)
-				minetest.remove_node(top)
-				minetest.remove_node(t)
-				minetest.remove_node(ttop)
+				core.remove_node(pos)
+				core.remove_node(top)
+				core.remove_node(t)
+				core.remove_node(ttop)
 			end
 		else
-			minetest.remove_node(pos)
-			minetest.remove_node(top)
+			core.remove_node(pos)
+			core.remove_node(top)
 		end
 	end,
 })
 
-minetest.register_node("myunderworld:underworld_block", {
+core.register_node("myunderworld:underworld_block", {
 	tiles = {
 		{name="myunderworld_ani_blue.png", animation={type="vertical_frames",aspect_w=16, aspect_h=16, length=0.5}}
 	},
@@ -159,13 +159,13 @@ minetest.register_node("myunderworld:underworld_block", {
 		}
 	}
 })
-minetest.register_abm({
+core.register_abm({
 	nodenames = {"myunderworld:underworld"},
 	interval = 1,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local t = meta:get_string("name")
 		local depth = tonumber(meta:get_string("depth"))
 
@@ -173,7 +173,7 @@ minetest.register_abm({
 
 		local up = meta:get_string("torb")
 
-		local objs = minetest.env:get_objects_inside_radius(pos, 1)
+		local objs = core.env:get_objects_inside_radius(pos, 1)
 		for k, player in pairs(objs) do
 		local p = player:get_player_name()
 		if tp[p] == false then 
@@ -185,13 +185,13 @@ minetest.register_abm({
 			if up == "top" and p then
 				tp[p] = false
 				player:setpos({x = pos.x, y = pos.y - depth, z = pos.z})
-				minetest.after(10, function()
+				core.after(10, function()
 					tp[p] = true
 				end)
 			else
 				tp[p] = false
 				player:setpos({x = pos.x, y = pos.y + depth, z = pos.z})
-				minetest.after(10, function()
+				core.after(10, function()
 					tp[p] = true
 				end)
 			end

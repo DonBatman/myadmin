@@ -17,10 +17,10 @@ local function normalize_name(name)
     return string.lower(name:gsub("[^%w]", ""))
 end
 
-minetest.register_on_prejoinplayer(function(name, ip)
+core.register_on_prejoinplayer(function(name, ip)
     local normalized_name = normalize_name(name)
 
-    local player_file = minetest.get_worldpath() .. "/players/" .. name
+    local player_file = core.get_worldpath() .. "/players/" .. name
     local file, err = io.open(player_file, "r")
     if file then
         file:close()
