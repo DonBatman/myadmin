@@ -17,7 +17,7 @@ core.register_chatcommand("setbar", {
 		end
 		local player = core.get_player_by_name(name)
 		player:hud_set_hotbar_itemcount(tonumber(param))
-		player:hud_set_hotbar_image("")
+		player:hud_set_hotbar_image("myextras_hotbar.png")
 		core.chat_send_player(name, "Hotbar has been set!")
 	end,
 })
