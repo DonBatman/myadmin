@@ -1,0 +1,4 @@
+
+#Enable myprivs
+myprivs.use(Enable to use the myprivs mod) bool false
+
