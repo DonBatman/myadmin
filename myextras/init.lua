@@ -21,3 +21,70 @@ core.register_chatcommand("setbar", {
 		core.chat_send_player(name, "Hotbar has been set!")
 	end,
 })
+
+core.register_chatcommand("speed", {
+    params = "<speed> [<player>]",
+    description = "Sets a speed for any player. (Standart speed is 1)",
+    privs = {server = true},
+    
+	func = function(name, param)
+		local speed = string.match(param, "([^ ]+)") or 1
+    	local oname = string.match(param, speed.." (.+)")
+    	
+    	if oname == nil then
+        	core.get_player_by_name(name):set_physics_override({
+            	speed = tonumber(speed)
+        	})
+        	return true, "Your speed is now "..speed
+    	else
+        	if core.get_player_by_name(oname) == nil then
+            	return false, core.colorize("red", "Please, specify an online player.")
+        	end
+        	core.get_player_by_name(oname):set_physics_override({
+            	speed = tonumber(speed)
+        	})
+        	return true, "Speed of player is now ."..speed
+    	end
+    end
+})
+core.register_chatcommand("god", {
+    params = "[<name>]",
+    description = "Enable/Disabe the god mode.",
+    privs = {server = true},
+	func = function(name, param)
+	
+    	local player
+    	
+    	if param == "" then
+        	player = core.get_player_by_name(name)
+    	else
+        	player = core.get_player_by_name(param)
+    	end
+    	
+    	if player == nil then
+        	return false, core.colorize("red", "Player "..param.." not found.")
+    	end
+    	
+    	local ag = player:get_armor_groups()
+    	
+    	if not ag["immortal"] then
+        	ag["immortal"] = 1
+        	player:set_armor_groups(ag)
+        	if param == "" then
+            	return true, core.colorize("yellow", "God mode enabled.")
+        	else
+            	core.chat_send_player(param, "God mode enabled for you by @1.", name)
+            	return true, "God mode enabled for ."..param
+        	end
+    	else
+        	ag["immortal"] = nil
+        	player:set_armor_groups(ag)
+        	if param == "" then
+            	return true, core.colorize("yellow", "God mode disabled.")
+        	else
+            	core.chat_send_player(param, "God mode disabled for you by "..name)
+            	return true, "God mode disabled for "..param
+        	end
+    	end
+	end
+})
